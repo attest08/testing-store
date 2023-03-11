@@ -40,12 +40,8 @@ jobs:
       - name: Compile Hardhat
         run: npx hardhat compile
 
-      - name: Start the local node with testnet images
-        run: node cli.js start --network ${{ matrix.network }} -d
-
       - name: Execute the tests
         run: |
           cd test
           npx hardhat test
       - name: Stop the local node
-        run: node cli.js stop
