@@ -1,0 +1,10 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "Validation",
+  "sourceName": "contracts/Validation.sol",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220629372b071f0607cea026e5c667e549710a179ab2d18b899c1c1604db9c19bed64736f6c63430008120033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220629372b071f0607cea026e5c667e549710a179ab2d18b899c1c1604db9c19bed64736f6c63430008120033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

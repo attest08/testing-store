@@ -1,0 +1,48 @@
+name: Store Tests
+on:
+  push:
+    branches: main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [18.x]
+        network: [mainnet, testnet, local, previewnet]
+
+    name: ${{ matrix.network }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Checkout store
+        run: |
+          gh repo clone georgi-l95/Store ./contracts
+
+      - name: Compile Hardhat
+        run: npx hardhat compile
+
+      - name: Start the local node with testnet images
+        run: node cli.js start --network ${{ matrix.network }} -d
+
+      - name: Execute the tests
+        run: |
+          cd test
+          npx hardhat test
+      - name: Stop the local node
+        run: node cli.js stop
