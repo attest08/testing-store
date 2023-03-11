@@ -44,4 +44,3 @@ jobs:
         run: |
           cd test
           npx hardhat test
-      - name: Stop the local node
