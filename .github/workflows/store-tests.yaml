@@ -31,9 +31,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Checkout store
-        run: |
-          gh repo clone georgi-l95/Store ./contracts
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          repository: georgi-l95/Store
+          path: contracts
 
       - name: Compile Hardhat
         run: npx hardhat compile
